@@ -1,0 +1,241 @@
+
+1
+00:00:03.690 --> 00:00:21.470
+Saurav Rijal: Good morning. I'm Saurav, and here's my teammate, Sivandra. We're going to walk you through a machine learning system that we built to detect cheating in online AI-driven interviews, especially on Mercker's platform, where candidates are evaluated by AI on real-time
+
+2
+00:00:21.550 --> 00:00:30.869
+Saurav Rijal: What makes this platform interesting, is that it's not just about being accurate, every decision the system makes. It has a real dollar cost attached to it.
+
+3
+00:00:30.890 --> 00:00:48.499
+Saurav Rijal: Missing a cheater, that's $600, fine, block a legitimate user, that's $300 loss. Route someone to manual review, that's $150 per person. So we'll walk through every step, how we process the data, what features we built, and how we chose and trained the models.
+
+4
+00:00:48.580 --> 00:00:56.950
+Saurav Rijal: And what the final decision of the system looks like in practice, with data processing. Sivendra will be talking about how we…
+
+5
+00:01:00.670 --> 00:01:20.420
+Shivendra Bhagat: Okay, thank you for that beautiful start, Saurav, that start. So, let's start with the data. The dataset had 18 behavioral features, but 13 of them had missing values. Instead of just filling them in and moving on, we also added a flag column.
+
+6
+00:01:20.420 --> 00:01:28.169
+Shivendra Bhagat: That tells the model, hey, this value was missing. That itself is a signal.
+
+7
+00:01:28.230 --> 00:01:43.109
+Shivendra Bhagat: Three features had really extreme ranges, like one feature went up to 39 million. We applied a log transform to fix that skew. We also flagged any values more than 3.5 standard deviations away from the mean.
+
+8
+00:01:43.230 --> 00:01:47.130
+Shivendra Bhagat: as, as outliers.
+
+9
+00:01:47.610 --> 00:01:50.349
+Shivendra Bhagat: Because those extreme profiles were often
+
+10
+00:01:50.470 --> 00:02:04.129
+Shivendra Bhagat: most, in most cases, cheaters only. So then we created new features from combinations of existing ones, like ratios between features, and picked the top 5 interaction terms using mutual information.
+
+11
+00:02:04.250 --> 00:02:10.340
+Shivendra Bhagat: After all that, we went from 18 features to 73. So, for the next slide, Sora will talk.
+
+12
+00:02:13.690 --> 00:02:20.329
+Saurav Rijal: Thank you, Sivander Talking about, feature engineering on the next slide,
+
+13
+00:02:20.870 --> 00:02:25.230
+Saurav Rijal: We engineered features from two completely different sources,
+
+14
+00:02:25.440 --> 00:02:39.360
+Saurav Rijal: And combining them is a big part of why the model works as well as it does. On the behavioral side, on the left, we started with 18 raw features and built on top of them. Missingness, flags, already mentioned.
+
+15
+00:02:39.360 --> 00:02:47.229
+Saurav Rijal: log transformed, transformed versions of this good columns, G-score outlier indicators.
+
+16
+00:02:47.230 --> 00:03:04.239
+Saurav Rijal: Ratio features between columns that measure related things, and top mutual information interaction terms. On the social graph side, we had 1.7 million nodes of a graph of user relationships. We computed each user's degree, the fraction of their
+
+17
+00:03:04.510 --> 00:03:09.419
+Saurav Rijal: direct, neighbors who are labeled cheaters, the same metric,
+
+18
+00:03:09.960 --> 00:03:29.850
+Saurav Rijal: Two hops out are computed efficiently using ISPARS matrix multiplication and a ghost neighbor ratio for users with connections outside the known dataset. We also ran Luven community detection on the full graph that gave us cluster membership and the cheating rate within each community.
+
+19
+00:03:30.010 --> 00:03:35.250
+Saurav Rijal: The intuition is simple. If your whole social cluster has a high cheating rate.
+
+20
+00:03:35.560 --> 00:03:39.169
+Saurav Rijal: That means, we have a meaningful context.
+
+21
+00:03:39.300 --> 00:03:42.179
+Saurav Rijal: Moving with model progression with.
+
+22
+00:03:47.410 --> 00:03:52.619
+Shivendra Bhagat: Okay, I think Saurabh explained that beautifully. Let's see if I could keep up.
+
+23
+00:03:52.730 --> 00:03:57.309
+Shivendra Bhagat: So, for this slide, we have model progression. So…
+
+24
+00:03:57.630 --> 00:04:12.179
+Shivendra Bhagat: We did not just train one model. We started simple, and then we built up on that. We started with logic regression as our baseline, then we moved to a decision tree, then we moved to random forest.
+
+25
+00:04:12.360 --> 00:04:19.010
+Shivendra Bhagat: Then we tried XGBoost and LightGBM, which are gradient boosting models.
+
+26
+00:04:19.680 --> 00:04:26.719
+Shivendra Bhagat: Finally, we blended XGBoost and LiteGBM together into… into an ensemble.
+
+27
+00:04:26.740 --> 00:04:39.869
+Shivendra Bhagat: Each step reduced the total cost, which was our main metric. Logistic regression cost about $10.5 million in the competition framework. Our best model
+
+28
+00:04:39.870 --> 00:04:47.390
+Shivendra Bhagat: The blended ensemble with pseudo-labeling cost, $6.37 million.
+
+29
+00:04:49.810 --> 00:05:06.289
+Shivendra Bhagat: That is a 40% improvement just by upgrading the model and adding more data. This shows the expected pattern, which is more complex models learn the nonlinear decision boundary better. And moving on to the next slide, Sora will continue.
+
+30
+00:05:08.930 --> 00:05:09.870
+Saurav Rijal: Talking about…
+
+31
+00:05:09.940 --> 00:05:26.809
+Saurav Rijal: Training strategy. For validation, we used stratified five-cross, five-fold cross-validation. Stratified meaning each fold, maintains the same 30.5% cheating rate as the pooled dataset.
+
+32
+00:05:26.850 --> 00:05:33.190
+Saurav Rijal: Without this, we can get calls where the label distribution is off, which makes our evaluation numbers
+
+33
+00:05:33.250 --> 00:05:39.129
+Saurav Rijal: unreliable. Inside each fold, we held out 10% as a calibration set.
+
+34
+00:05:39.270 --> 00:05:56.390
+Saurav Rijal: Free-based models are known to produce overconfident probabilities estimates. We used isotonic regression calibration on that, held out 10%, so the probabilities we feed into threshold optimization are actually meaningful.
+
+35
+00:05:56.560 --> 00:06:08.750
+Saurav Rijal: This process generates what's called out-of-fold predictions, calibrated probability estimates for every single training sample with no data leakage.
+
+36
+00:06:09.060 --> 00:06:25.669
+Saurav Rijal: That's what we used for threshold optimization. For class imbalance, the approach varied by model. Logistic regression, decision fee, and random forest all used class weight, that was balanced, and XCB used…
+
+37
+00:06:25.670 --> 00:06:32.360
+Saurav Rijal: XGBoost used scale, or position weight of 2.0, which directly encodes
+
+38
+00:06:32.480 --> 00:06:37.160
+Saurav Rijal: The cost ratio, missing a cheater costs twice as much as a false block.
+
+39
+00:06:37.310 --> 00:06:39.740
+Saurav Rijal: like GBM used,
+
+40
+00:06:40.080 --> 00:06:50.810
+Saurav Rijal: is on balance equals true. We also did pseudo-labeling. We scored, the 160,000 on-labeled, high-confidence, clean users with our
+
+41
+00:06:51.020 --> 00:07:05.649
+Saurav Rijal: trained XGBoost model, and added the 66,000 with the predicted probability below 0.05 as additional negatives. That's, free label data. Onto evaluation with next slide.
+
+42
+00:07:12.870 --> 00:07:21.500
+Shivendra Bhagat: Okay, so this competition did not use accuracy or F1 as the main metric. It used a custom cost function.
+
+43
+00:07:21.630 --> 00:07:38.370
+Shivendra Bhagat: There are 3 zones. If we auto-pass someone and they were cheating, that costs $600. If we send someone to manual review, it costs $150 for a false positive, or 5 for a true positive.
+
+44
+00:07:39.340 --> 00:07:57.500
+Shivendra Bhagat: If we auto-block someone innocent, let's say, that costs us $300. So, missing a cheater is twice as expensive as someone wrongly blocking someone. We ran a grid source over two thresholds to find the
+
+45
+00:07:57.500 --> 00:08:00.049
+Shivendra Bhagat: Combo that minimized cost.
+
+46
+00:08:00.890 --> 00:08:19.970
+Shivendra Bhagat: Our best thresholds were 0.21 to pass, and 0.96 to block. On the standard metrics, our AUC was 0.8914, precision was 0.86, recall was 0.59, and F1 was 0.7.
+
+47
+00:08:19.970 --> 00:08:22.120
+Shivendra Bhagat: Onto the next slide with Saurav.
+
+48
+00:08:25.540 --> 00:08:37.060
+Saurav Rijal: This is what our final system looks like in operation. Every candidate gets assigned a probability of cheating, and that probability places them into one of three zones.
+
+49
+00:08:37.159 --> 00:08:39.320
+Saurav Rijal: Autopass.
+
+50
+00:08:42.380 --> 00:08:50.210
+Saurav Rijal: So, AutoPass has a probability below, 0.21. These candidates are led through automatically.
+
+51
+00:08:55.000 --> 00:09:11.929
+Saurav Rijal: slipped through automatically. 57,567 legitimate users passed through cleanly, 5,211 cheaters slipped through. That's our irreducible false negative cost at this operation, point.
+
+52
+00:09:11.970 --> 00:09:20.350
+Saurav Rijal: So, we also have manual review, probability between 0.121 and 0.96.
+
+53
+00:09:20.490 --> 00:09:34.789
+Saurav Rijal: Real cheaters are routed to a human reviewer, along with 20,000 legitimate users. This is the middle ground. The model is not certain enough to auto-block, but it's flagged them for a closer look.
+
+54
+00:09:34.870 --> 00:09:41.459
+Saurav Rijal: And moving on to auto-block, this has a probability at or above 0.96.
+
+55
+00:09:41.630 --> 00:09:58.759
+Saurav Rijal: This is where the model is most impressive. 11,000 cheaters are blocked automatically, only 55 legitimate users are in this group. That's 99.5% precision at auto-block. The model is essentially certain before it blocks anyone.
+
+56
+00:09:58.910 --> 00:10:17.599
+Saurav Rijal: Total cost lands at $6.37 million, that's a 40% reduction from 10.58 million baseline. The AUC of 0.89 confirms that this isn't just threshold tuning on a weak model. The model genuinely separates cheaters from legitimate users.
+
+57
+00:10:17.830 --> 00:10:25.049
+Saurav Rijal: To summarize, we built a cost-sensitive pipeline that combines behavioral and graph features
+
+58
+00:10:25.320 --> 00:10:32.420
+Saurav Rijal: Uses gradient boosting in ensembles with pseudo-labeling, and optimizes a 3-zone. This is a framework.
+
+59
+00:10:32.660 --> 00:10:35.439
+Saurav Rijal: The result is a 40% cost reduction.
+
+60
+00:10:37.160 --> 00:10:39.080
+Saurav Rijal: Thank you for, tuning in.
+

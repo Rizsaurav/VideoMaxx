@@ -1,0 +1,19 @@
+(.venv) saurav@Sauravs-MacBook-Air VidMaxx % vidmaxx --help
+
+                                                                                                      
+ Usage: vidmaxx [OPTIONS] COMMAND [ARGS]...                                                           
+                                                                                                      
+ Local YouTube automation pipeline — research to rendered video on M2.                                
+                                                                                                      
+╭─ Options ──────────────────────────────────────────────────────────────────────────────────────────╮
+│ --help          Show this message and exit.                                                        │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Commands ─────────────────────────────────────────────────────────────────────────────────────────╮
+│ new     Create a project for TOPIC and run the full pipeline.                                      │
+│ run     Resume a stopped or failed project from its current stage.                                 │
+│ list    List all projects and their current stage.                                                 │
+│ shorts  Render chosen short candidates for a project.                                              │
+│ status  Show detailed status for one project.                                                      │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+(.venv) saurav@Sauravs-MacBook-Air VidMaxx % 

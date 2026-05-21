@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3.11 -c ' *)",
+      "Bash(python -c \"from vidmaxx.pipeline.stages.s08_shorts import run, _select_windows, _write_shorts_ass, _render_short_sync; print\\('imports OK'\\)\")",
+      "Bash(python3.11 -c \"import sys; sys.path.insert\\(0, '/Users/saurav/Desktop/VidMaxx'\\); from vidmaxx.pipeline.stages.s08_shorts import _select_windows, _write_shorts_ass; print\\('OK'\\)\")",
+      "Bash(python3 -c ' *)",
+      "Bash(python3 -c \"import google.genai; print\\(google.genai.__version__\\)\")",
+      "Bash(python3 -c \"from google.genai import types; p = types.Part.from_bytes\\(data=b'x', mime_type='image/jpeg'\\); print\\('from_bytes ok'\\)\")",
+      "Bash(vidmaxx status *)",
+      "Bash(python3 -c \"from google.genai import types; help\\(types.GenerateContentConfig\\)\")",
+      "Bash(sed -i '' 's/async def search\\(self, query: str, n: int\\) -> list\\\\[AssetCandidate\\\\]:/async def search\\(self, query: str, n: int, images_only: bool = False\\) -> list[AssetCandidate]:/' /Users/saurav/Desktop/VidMaxx/vidmaxx/services/assets/wikimedia.py)",
+      "Bash(sed -i '' 's/async def search\\(self, query: str, max_results: int = 5\\) -> list\\\\[AssetCandidate\\\\]:/async def search\\(self, query: str, max_results: int = 5, images_only: bool = False\\) -> list[AssetCandidate]:/' /Users/saurav/Desktop/VidMaxx/vidmaxx/services/assets/internet_archive.py)",
+      "Bash(which tlmgr *)",
+      "Read(//usr/local/**)",
+      "Bash(ls -la /Users/saurav/.zshrc)",
+      "Read(//Users/saurav/**)",
+      "Bash(/Users/saurav/Desktop/VidMaxx/.venv/bin/python -m pip install manim)",
+      "Bash(python3 -c \"import json,sys; s=json.load\\(sys.stdin\\); print\\('stage:', s['stage']\\)\")",
+      "Bash(.venv/bin/python -c ' *)",
+      "Bash(python -c ' *)"
+    ]
+  }
+}

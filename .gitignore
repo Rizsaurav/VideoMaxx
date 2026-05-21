@@ -1,0 +1,65 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+.venv/
+venv/
+env/
+
+# uv
+.uv/
+uv.lock
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Project outputs (generated per-run, not committed)
+projects/*/
+!projects/.gitkeep
+
+# Cache
+.cache/
+.diskcache/
+*.diskcache
+
+# Models (large, downloaded at runtime)
+models/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+
+# Audio/video outputs
+*.wav
+*.mp4
+*.mp3
+*.aac
+style_pack/voice_ref.wav
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/
+
+# Test artifacts
+.pytest_cache/
+.coverage
+htmlcov/

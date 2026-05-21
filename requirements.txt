@@ -1,0 +1,48 @@
+# Install: python -m venv .venv && source .venv/bin/activate
+# Then: pip install --upgrade pip && pip install numpy && pip install -r requirements.txt
+# (numpy must be installed first — pkuseg, a chatterbox-tts dep, needs it at build time)
+
+# Core async / HTTP
+httpx[http2]>=0.27
+anyio>=4.0
+tenacity>=8.2
+
+# Data / config
+pydantic>=2.0
+pydantic-settings>=2.0
+python-dotenv>=1.0
+
+# LLM + research
+litellm>=1.40
+google-genai>=1.0
+
+# TTS
+f5-tts-mlx
+elevenlabs>=1.0
+pedalboard>=0.9
+
+# Vision / alignment
+open-clip-torch>=2.24
+whisperx
+
+# ML runtime (MPS)
+torch>=2.2
+torchaudio>=2.2
+
+# Audio processing
+soundfile>=0.12
+numpy>=1.26
+
+# State / caching
+diskcache>=5.6
+
+# CLI + logging
+typer>=0.12
+rich>=13.0
+structlog>=24.0
+
+# Dev / testing
+pytest>=8.0
+pytest-asyncio>=0.23
+pytest-cov>=5.0
+ruff>=0.4

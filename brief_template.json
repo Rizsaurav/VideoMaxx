@@ -1,0 +1,12 @@
+{
+  "topic": "One sentence — the hidden system being exposed.",
+  "cold_fact": "The single most alarming verifiable stat or mechanism. This becomes Scene 1 verbatim. Must come from a primary source (government report, SEC filing, court document, academic paper).",
+  "false_belief": "What the viewer currently thinks is true. Must be something genuinely believed — not obvious, not a straw man.",
+  "three_layers": [
+    "Surface (Scene 2): What it looks like from outside. The visible layer most people stop at.",
+    "Mechanism (Scene 4): How it actually works underneath. The causal chain. Because X happens, Y becomes possible.",
+    "Consequence (Scene 6): What it does to the viewer specifically. Use 'you', not 'people' or 'consumers'."
+  ],
+  "twist": "The implication one level deeper than the obvious conclusion. The thing even informed people don't say out loud. This is the social currency moment.",
+  "dinner_fact": "The single sentence the viewer repeats to someone else tonight. Concise, specific, sourceable."
+}

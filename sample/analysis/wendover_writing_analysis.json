@@ -1,0 +1,337 @@
+{
+  "source_file": "wendover.json",
+  "title": "Cities at Sea: How Aircraft Carriers Work",
+  "creator": "Wendover Productions",
+  "duration": "11:42",
+  "executive_fingerprint": {
+    "one_sentence_dna": "The video reverse-engineers the logistical, physical, and human systems that make a floating city-airport possible, before pivoting to question its strategic role and vulnerability in modern warfare.",
+    "dominant_engine": "awe",
+    "core_viewer_question": "How is it physically and logistically possible to operate a floating airport, and what does that power mean in the real world?",
+    "primary_tension_source": "The constant contradiction between the immense scale of the operation and the physical constraints of a ship at sea."
+  },
+  "temporal_beat_map": [
+    {
+      "beat": 1,
+      "beat_name": "The Strategic 'Why'",
+      "source_start_timestamp": "0:08",
+      "source_end_timestamp": "0:57",
+      "normalized_start_pct": 1.14,
+      "normalized_end_pct": 8.12,
+      "narrative_function": "Establishes the strategic value and global scarcity of aircraft carriers to create a sense of power and significance. It sets the stakes by defining what a carrier *is* in terms of military might.",
+      "tension_state": "setup",
+      "dominant_writing_moves": [
+        "Stating Power as Fact",
+        "Geographic Scoping",
+        "Quantifying Scarcity"
+      ],
+      "evidence_snippets": [
+        "A single aircraft carrier is enough to markedly change the level of a nation\u2019s military might.",
+        "80% of the world\u2019s population lives within 60 miles or 100 kilometers from the ocean.",
+        "there are just 19 aircraft carriers worldwide... the US has the eleven largest in the world."
+      ]
+    },
+    {
+      "beat": 2,
+      "beat_name": "The Operational Contradiction",
+      "source_start_timestamp": "0:57",
+      "source_end_timestamp": "1:24",
+      "normalized_start_pct": 8.12,
+      "normalized_end_pct": 11.97,
+      "narrative_function": "Introduces the core thesis ('cities at sea') and the central operational contradiction: achieving immense capability (busier than an airport) within extreme constraints (a moving ship). This frames the rest of the video as an explanation of how this contradiction is resolved.",
+      "tension_state": "setup",
+      "dominant_writing_moves": [
+        "Metaphor as Thesis",
+        "Juxtaposing Analogues",
+        "Stating the Core Problem"
+      ],
+      "evidence_snippets": [
+        "They are fully fledged cities at sea.",
+        "the aircraft carrier Charles de Gaulle becomes busier than Charles de Gaulle Airport in Paris.",
+        "To be able to achieve such a capability on a moving ship is no easy feat."
+      ]
+    },
+    {
+      "beat": 3,
+      "beat_name": "The Support System",
+      "source_start_timestamp": "1:24",
+      "source_end_timestamp": "2:22",
+      "normalized_start_pct": 11.97,
+      "normalized_end_pct": 20.23,
+      "narrative_function": "Zooms out to reveal the carrier is not a single entity but the center of a larger system (the strike group). This solves the initial problem of defense and introduces a new layer of complexity and scale.",
+      "tension_state": "explanation",
+      "dominant_writing_moves": [
+        "Problem-Solution Framing",
+        "System Reveal",
+        "List as Exposition"
+      ],
+      "evidence_snippets": [
+        "these carriers are big targets. It is for this reason that carriers never travel alone...",
+        "the carrier strike groups American carriers travel with are typically made up of...",
+        "An aircraft carrier is the flagship of this strike group..."
+      ]
+    },
+    {
+      "beat": 4,
+      "beat_name": "The Logistics Problem: Fuel & Food",
+      "source_start_timestamp": "2:22",
+      "source_end_timestamp": "3:39",
+      "normalized_start_pct": 20.23,
+      "normalized_end_pct": 31.2,
+      "narrative_function": "Addresses the first major logistical challenge: resupply. It debunks a common assumption (ship fuel) to introduce the real, more complex problem (aviation fuel, food) and then explains the intricate 'at-sea' solution.",
+      "tension_state": "explanation",
+      "dominant_writing_moves": [
+        "Debunk and Refine",
+        "Process Explanation",
+        "Visual Choreography"
+      ],
+      "evidence_snippets": [
+        "Most aircraft carriers don\u2019t need regular refueling... what they can\u2019t do is carry enough food...",
+        "they restock while at sea.",
+        "attaching pallets to dollies that wheel cargo across to the carrier like a zipline."
+      ]
+    },
+    {
+      "beat": 5,
+      "beat_name": "The Human Connection: Mail",
+      "source_start_timestamp": "3:39",
+      "source_end_timestamp": "5:05",
+      "normalized_start_pct": 31.2,
+      "normalized_end_pct": 43.45,
+      "narrative_function": "Uses a single, relatable logistical element (mail) as a proxy to explain the high-frequency connection to the outside world. This humanizes the 'city at sea' and serves as a narrative vehicle to introduce the C-2 Greyhound aircraft, setting up the next problem.",
+      "tension_state": "explanation",
+      "dominant_writing_moves": [
+        "Humanizing Detail as Proxy",
+        "Incongruous Analogy",
+        "Pivoting via Priority"
+      ],
+      "evidence_snippets": [
+        "Each carrier actually has a mailing address just like any building in the US.",
+        "it costs the exact same as a shipment to any other US address...",
+        "While mail does wonders for increasing crew morale, that\u2019s actually the lowest priority cargo..."
+      ]
+    },
+    {
+      "beat": 6,
+      "beat_name": "The Physics Problem: Takeoff & Landing",
+      "source_start_timestamp": "5:05",
+      "source_end_timestamp": "6:22",
+      "normalized_start_pct": 43.45,
+      "normalized_end_pct": 54.42,
+      "narrative_function": "Directly addresses the physics problem introduced by the C-2 Greyhound: how to operate large aircraft on a tiny runway. It explains the catapult and arrestor wire systems through stark numerical comparison and a dramatic reveal.",
+      "tension_state": "escalation",
+      "dominant_writing_moves": [
+        "Numerical Contrast",
+        "Question and Negation",
+        "Categorization of Technology"
+      ],
+      "evidence_snippets": [
+        "runways of only 1,100 feet... So how do C-2 Greyhounds... deal with having runways of only 1,100 feet...? They don\u2019t. They take off with just 325 feet...",
+        "All US and French carriers use a system of catapults...",
+        "Other carriers... don\u2019t have catapults so they can only launch lighter... aircraft."
+      ]
+    },
+    {
+      "beat": 7,
+      "beat_name": "The Human System: Life on Board",
+      "source_start_timestamp": "6:22",
+      "source_end_timestamp": "8:23",
+      "normalized_start_pct": 54.42,
+      "normalized_end_pct": 71.65,
+      "narrative_function": "Zooms into the social and organizational structure of the 'city.' It explains the human systems through color-coded roles, population statistics, and living conditions, fulfilling the 'city at sea' promise.",
+      "tension_state": "explanation",
+      "dominant_writing_moves": [
+        "Systematized Exposition (Color Coding)",
+        "Statistical Breakdown",
+        "Sensory Deprivation Detail"
+      ],
+      "evidence_snippets": [
+        "everyone\u2019s job is easily identifiable by the color shirt they wear.",
+        "3,200 of them have jobs relating to running the ship... 2,500 other personnel are part of the carrier\u2019s air wing.",
+        "many onboard can go weeks without seeing sunlight."
+      ]
+    },
+    {
+      "beat": 8,
+      "beat_name": "The Geopolitical 'Why'",
+      "source_start_timestamp": "8:23",
+      "source_end_timestamp": "9:51",
+      "normalized_start_pct": 71.65,
+      "normalized_end_pct": 84.19,
+      "narrative_function": "Pivots from 'how they work' to 'how they are used.' It introduces the concept of 'power projection' and provides recent, specific geopolitical examples to demonstrate the carrier's role as a tool of international influence, raising the stakes from operational to strategic.",
+      "tension_state": "synthesis",
+      "dominant_writing_moves": [
+        "Conceptual Pivot",
+        "Argument by Exception",
+        "Concrete Geopolitical Examples"
+      ],
+      "evidence_snippets": [
+        "Since their heyday... some have started to question the place aircraft carriers have...",
+        "The US tends to use its carriers for a forth function\u2014power projection.",
+        "cruising around the South China Sea... regularly make visits to the Korean peninsula..."
+      ]
+    },
+    {
+      "beat": 9,
+      "beat_name": "The Critique & Future",
+      "source_start_timestamp": "9:51",
+      "source_end_timestamp": "11:00",
+      "normalized_start_pct": 84.19,
+      "normalized_end_pct": 94.02,
+      "narrative_function": "Introduces the counter-argument: vulnerability. It quantifies the catastrophic cost of failure and uses evidence from war games to prove the risk is real. It concludes by synthesizing this vulnerability with the fact that nations are still building them, leaving the viewer with an unresolved question about the future.",
+      "tension_state": "reversal",
+      "dominant_writing_moves": [
+        "Quantifying Catastrophe",
+        "Evidence via Simulation",
+        "Contradictory Synthesis"
+      ],
+      "evidence_snippets": [
+        "The sinking of a single US aircraft carrier could result in more American military deaths than the entire Iraq war...",
+        "Swedish and French submarines, respectively, have \u201cwon\u201d the games against US carriers.",
+        "despite their possible obsolescence... the aircraft carrier won\u2019t be leaving the world\u2019s oceans anytime soon."
+      ]
+    }
+  ],
+  "writing_characteristics": {
+    "hook_design": {
+      "opening_move": "Abstract Power Claim to Specific Rule",
+      "time_to_first_specific_entity_or_number": "0:18",
+      "why_it_creates_forward_motion": "It begins with a broad, almost unbelievable statement of power ('markedly change... military might'), which creates curiosity. It then immediately grounds this power in a concrete, surprising legal rule ('14 miles or 22 kilometers from any country\u2019s coast'), which makes the abstract power feel real and strategically significant, prompting the question 'How?'",
+      "reusable_rule": "Start with a grand claim about an entity's power, then immediately substantiate it with a specific, non-obvious number, rule, or geographic constraint."
+    },
+    "information_architecture": {
+      "exposition_strategy": "The script uses a nested problem-solution structure. It presents a macro-problem (operating an airbase at sea), then breaks it down into a series of smaller, sequential problems (defense, resupply, takeoff physics, human organization) and explains the solution to each before moving to the next. This turns exposition into a series of reveals.",
+      "data_to_story_ratio": "High data, but framed as story. Nearly every sentence contains a piece of data (a number, a name, a process step), but it's always deployed to answer a question or solve a problem raised in the previous sentence. For example, the list of strike group ships isn't just a list; it's the answer to 'how do they defend themselves?'",
+      "how_complexity_is_layered": [
+        "Zooming In/Out: Moves from the global strategic view (19 carriers worldwide) down to the micro-level of an individual's shirt color, then back out to geopolitical maneuvering.",
+        "Sequential Problem Solving: Explains the support ships first, then the supply lines from those ships, then the cargo planes that supplement those lines.",
+        "Debunk and Refine: Introduces a simple idea (they need fuel) and then complicates it (not ship fuel, but aviation fuel and food), forcing the viewer to update their mental model."
+      ],
+      "what_is_delayed": [
+        "The vulnerability and critique of carriers are withheld until the final two minutes, after the viewer has been fully indoctrinated into their operational awe.",
+        "The specific mechanisms for takeoff (catapults) are delayed until after the problem of landing a large plane (the C-2) is introduced.",
+        "The geopolitical purpose ('power projection') is delayed until all the 'how it works' questions are answered."
+      ],
+      "what_is_frontloaded": [
+        "The immense strategic power and global reach.",
+        "The scale in numbers (population, ship count, launch rate).",
+        "The core metaphor: 'cities at sea'."
+      ]
+    },
+    "tension_mechanics": {
+      "open_loops": [
+        "How can a ship be busier than an airport?",
+        "How do you resupply a city in the middle of the ocean?",
+        "How do you land a 50-person plane on a 300-meter runway?",
+        "If they are so powerful, why are they questioned?"
+      ],
+      "pivot_types": [
+        "The Contradictory Pivot: 'While [fact A is true], [contradictory fact B is the real problem].' (e.g., nuclear power vs. food needs).",
+        "The Problem-Reason Pivot: '[Statement of fact/problem]. It is for this reason that [consequence/solution].' (e.g., big targets -> never travel alone).",
+        "The Direct Question Pivot: 'So how do [X] deal with [Y]?'",
+        "The Priority-Shift Pivot: 'While [A] is important, [B] is actually the real purpose.' (e.g., mail vs. spare parts)."
+      ],
+      "escalation_pattern": "The tension escalates by moving from logistical problems to physics problems to human problems, and finally to existential geopolitical problems. The scale of the 'problem' grows with each beat, from 'how to get food' to 'how to avoid starting WW3'.",
+      "release_pattern": "Tension is released through clear, mechanical explanations. Each 'how is this possible?' question is answered with a satisfyingly clever system (ziplines, catapults, color-coded shirts). The final tension (vulnerability) is not released but synthesized into a new, lingering question.",
+      "failure_or_reversal_timestamp": "9:51"
+    },
+    "sentence_level_craft": {
+      "sentence_length_profile": "Primarily medium-length, declarative sentences that deliver one piece of information. This creates a steady, authoritative rhythm. Short, punchy sentences are used for reveals or negations ('They don\u2019t.') or to state a core thesis ('They are fully fledged cities at sea.').",
+      "reveal_sentences": [
+        "[5:36] So how do C-2 Greyhounds and other aircraft on carriers deal with having runways of only 1,100 feet or 330 meters long? [5:43] They don\u2019t. [5:44] They take off with just 325 feet or 99 meters of space."
+      ],
+      "contradiction_sentences": [
+        "[2:42] While an American or French carrier could hypothetically sail nonstop for years or even decades, what they can\u2019t do is carry enough food...",
+        "[10:44] ...so, despite their possible obsolescence, we can be sure that the aircraft carrier won\u2019t be leaving the world\u2019s oceans anytime soon."
+      ],
+      "entity_sentences": [
+        "[1:50] ...the carrier strike groups American carriers travel with are typically made up of a guided missile cruiser equipped with tomahawk missiles, two guided missile destroyers, an attack submarine, and a supply ship.",
+        "[9:04] In the Pacific, the US has an even greater advantage since it has the USS Ronald Reagan based in Yokosuka, Japan from where it could reach the shores of North Korea, for example, in just 29 hours."
+      ],
+      "question_answer_patterns": [
+        "Explicit Question/Answer: '[5:36] So how do C-2 Greyhounds... deal with having runways of only 1,100 feet...? [5:49] All US and French carriers use a system of catapults...'",
+        "Implicit Problem/Solution: '[1:42] But of course... these carriers are big targets. [1:46] It is for this reason that carriers never travel alone...'"
+      ],
+      "forbidden_filler_patterns_to_avoid": [
+        "Vague qualifiers like 'somewhat,' 'rather,' or 'quite.'",
+        "First-person narrative intrusion ('I think,' 'In my opinion').",
+        "Rhetorical questions that don't lead immediately to an answer.",
+        "Phrases like 'As you can see' or 'It's interesting to note'."
+      ]
+    },
+    "transition_system": {
+      "how_sections_turn": "Transitions are almost always functional, not stylistic. A section ends by either solving a problem or revealing a new, more complex one that the next section must address. The end of one paragraph creates the topic sentence for the next.",
+      "common_transition_shapes": [
+        "From a system's solution to a detail within that solution: 'They restock at sea... From there the two ships will shoot lines across...'",
+        "From a specific element to its broader purpose: 'This is how mail arrives... While mail does wonders... that\u2019s actually the lowest priority cargo...'",
+        "From a system's description to a problem it creates: 'This C-2 Greyhound is... not tiny... So how do C-2 Greyhounds... deal with having runways of only 1,100 feet...?'"
+      ],
+      "best_transition_examples": [
+        "[4:16] ...but conveniently, carriers are airports at sea.",
+        "[7:03] The flight deck is a dangerous place given its small size. [7:07] It\u2019s so small that all the carrier\u2019s aircraft can\u2019t fit on it but of course just below the flight deck is the hangar.",
+        "[8:23] Since their heyday in World War Two, some have started to question the place aircraft carriers have in modern warfare."
+      ]
+    },
+    "evidence_and_specificity": {
+      "number_usage": "Numbers are used to establish scale, create contrast, and quantify power. They are almost always paired with a unit and often a conversion (miles/kilometers). Examples: '19 aircraft carriers worldwide,' '6,000 people,' 'every 30 seconds,' '35 miles or 56 kilometers per hour.'",
+      "named_entity_usage": "Specific, named entities (USS Gerald R. Ford, Charles de Gaulle, C-2 Greyhound, Yokosuka, Japan) are used to anchor abstract concepts in reality. They prevent the explanation from becoming a generic lecture on 'carriers' and instead make it a story about specific, real-world objects and places.",
+      "source_or_authority_handling": "Authority is built implicitly through the confident, declarative tone and the density of specific, verifiable facts. The script doesn't cite sources directly but presents information as established fact. The only external validation mentioned is the war games with 'Swedish and French submarines,' which serves as powerful evidence for the vulnerability argument.",
+      "concrete_detail_density": "High. The script avoids abstraction wherever possible. It doesn't say 'they transfer supplies'; it says 'attaching pallets to dollies that wheel cargo across to the carrier like a zipline' and 'helicopters to pick up pallets.'"
+    },
+    "visual_language": {
+      "objects_places_and_images_the_script_implies": [
+        "Maps showing carrier positions and ranges.",
+        "Animated diagrams of catapults, arrestor wires, and at-sea resupply.",
+        "Color-coded infographics of flight deck crew.",
+        "Side-by-side comparisons of carrier runways vs. airport runways.",
+        "Archival footage of C-2 Greyhounds landing, strike groups sailing, and geopolitical hotspots (South China Sea)."
+      ],
+      "incongruity_moves": [
+        "A military mailing address that works like a civilian one.",
+        "A ship that is busier than a major international airport.",
+        "A runway that is shorter than the plane that needs to use it."
+      ],
+      "visual_query_rules_for_pipeline": [
+        "For any process, generate a simplified 2D animation showing the mechanics (e.g., catapult shuttle, resupply hoses).",
+        "When a number indicating scale is mentioned (e.g., 6,000 people), show a visual representation of that scale (e.g., time-lapse of crew, wide shot of deck).",
+        "When comparing two things (carrier vs. airport), show them to scale.",
+        "Every named entity (USS Ronald Reagan, C-2 Greyhound) requires specific B-roll of that entity."
+      ]
+    },
+    "voice_and_rhythm": {
+      "tone": "Authoritative awe. The voice is that of an expert guide revealing the secrets of a complex machine. It is objective and fact-driven, but the choice of facts and the framing consistently generate a sense of wonder at the scale and ingenuity, which later shifts to a more sober, analytical tone when discussing risks.",
+      "cadence": "The cadence is steady and propulsive, driven by the medium-length declarative sentences. It rarely pauses for reflection until the final two beats. The pace is dictated by the rate of information delivery, which is consistently high.",
+      "humor_or_irony": "Minimal and dry. The only hint of irony is in the reveal that the most powerful warships in the world have been 'sunk' in simulations by allies, or the understated 'conveniently, carriers are airports at sea.'",
+      "emotional_temperature_curve": "Starts cool and factual, warms to 'awe' through the middle section as the operational complexity is revealed, spikes to 'dread' when quantifying the cost of loss, and ends on a 'pensive' note with the final synthesis."
+    },
+    "ending_design": {
+      "final_move": "Contradictory Synthesis",
+      "resolution_level": "liminal",
+      "last_impression": "The video ends by holding two opposing ideas in tension: aircraft carriers are demonstrably vulnerable and potentially obsolete, yet the world's most powerful nations are doubling down on building more. This leaves the viewer with a sophisticated and unresolved question about the future of military strategy, rather than a simple answer."
+    },
+    "transplantable_rules": [
+      "Structure exposition as a chain of problem-solution pairs to maintain narrative momentum.",
+      "Use a single, human-scale logistical detail (like mail) as a narrative proxy to explain a much larger, more complex system.",
+      "After fully explaining 'how it works' with a sense of awe, pivot hard in the final act to 'what if it fails?' to introduce critique and raise the stakes.",
+      "Ground every abstract claim of power or scale with a specific, surprising number or named entity.",
+      "Use a 'Debunk and Refine' move: state a simple, common assumption, show why it's incomplete, and then provide the more complex, correct explanation."
+    ],
+    "anti_patterns": [
+      "Do not rely on a single, continuous narrative. The video's strength is its modular, problem-solution structure.",
+      "Avoid overt editorializing or personal opinion. The argument is built through the selection and sequencing of facts, not through explicit judgment calls (until the very end).",
+      "Do not introduce the critique or vulnerability too early. The power of the final beat depends on the audience first being convinced of the carrier's near-mythical competence."
+    ]
+  },
+  "agent_notes_for_17_minute_systemic_video": {
+    "what_to_copy": [
+      "The 3-act structure: Act 1 (Beats 1-2) establishes the 'What & Why' (strategic value). Act 2 (Beats 3-7) is a deep dive into the 'How' (logistics, physics, human systems). Act 3 (Beats 8-9) is the 'So What & What If' (geopolitical use and vulnerability). This is a robust template for any systemic explanation.",
+      "The 'zoom' technique: moving from global context -> ship system -> human detail -> global context.",
+      "The use of a relatable proxy (mail) to unpack a complex subsystem. For a video on supply chains, we could use 'the journey of a single avocado' to explain the entire cold chain.",
+      "The 'Contradictory Synthesis' ending. It's more powerful to leave the audience with a complex, unresolved tension than a neat summary."
+    ],
+    "what_to_avoid": [
+      "The pacing is very rapid. For a 17-minute video, we'll need to build in more moments for information to settle. This video is extremely dense; we can afford to let key ideas breathe more.",
+      "This video is almost entirely exposition. A longer format might benefit from a more character-driven element or a clearer narrative through-line beyond just 'how it works'."
+    ],
+    "best_use_in_our_pipeline": "This video's DNA is perfect for the 'System Explanation' genre. Its structure should be the default template for any video aiming to explain a complex, closed system (e.g., 'How a Fusion Reactor Works,' 'How the Global Financial System Moves Money'). The transition mechanics and problem-solution framing are particularly valuable for our 'Beat 3: The System' and 'Beat 4: The Process' sections, turning what could be dry exposition into a series of compelling reveals."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "_comment": "Fill in your brand palette. Used by the timeline compiler for text overlays.",
+  "primary": "#FFFFFF",
+  "accent": "#FF4500",
+  "background": "#0A0A0A",
+  "caption_bg": "#000000CC",
+  "caption_text": "#FFFFFF",
+  "emphasis_highlight": "#FF4500"
+}
