@@ -62,12 +62,14 @@ class MainScene(Scene):
         [self.add(b, v, nm) for b, v, nm in zip(bars, val_labels, name_labels)]
         self.add(caption, fair_line, fair_label)
 
-        # — animate all bars simultaneously ———————————————————
         grow_time = DURATION_SEC * 0.60
         self.play(
-            *[t.animate.set_value(1) for t in trackers],
+            AnimationGroup(
+                *[t.animate.set_value(1) for t in trackers],
+                lag_ratio=0.2,
+            ),
             run_time=grow_time,
-            rate_func=ease_out_cubic,
+            rate_func=smooth,
         )
 
         # — reveal fair line ———————————————————————————————————

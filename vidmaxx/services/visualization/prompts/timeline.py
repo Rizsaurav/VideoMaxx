@@ -52,7 +52,7 @@ class MainScene(Scene):
             grp = VGroup(dot, tick, year_txt, desc_txt)
             grp.set_opacity(0)
             self.add(grp)
-            self.play(grp.animate.set_opacity(1), run_time=max(0.3, t_each), rate_func=ease_out_cubic)
+            self.play(grp.animate.set_opacity(1), run_time=max(0.3, t_each), rate_func=smooth)
 
         i1, i2 = GAP_X_IDX
         gap_x   = (xs[i1] + xs[i2]) / 2

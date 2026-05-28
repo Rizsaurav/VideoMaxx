@@ -5,39 +5,40 @@ class MainScene(Scene):
     def construct(self):
         self.camera.background_color = "#0a0a0a"
 
-        BAR_W   = 10.0
-        BAR_H   = 0.72
-        START_X = -5.0
-        label_x = START_X - 0.24
+        # 3-column layout: [labels | bars | amounts]
+        LABEL_R  = -2.5   # right edge of label column
+        BAR_L    = -2.3   # left edge of all bars
+        MAX_BAR  = 7.2    # max bar width (= gross bar width)
+        AMT_L    = 5.1    # left edge of amount column
+        BAR_H    = 0.62
+        ROW_STEP = 1.05
 
-        def make_row(y, label_txt, amount, color, alpha=1.0):
-            bar = Rectangle(width=BAR_W * (amount / GROSS), height=BAR_H)
-            bar.set_fill(color, opacity=alpha).set_stroke(width=0)
-            bar.move_to([START_X + bar.width / 2, y, 0])
-            lbl = Text(label_txt, font_size=24, color="#888888")
-            lbl.move_to([label_x - 0.1, y, 0]).align_to(bar, LEFT + UP)
-            amt = Text(
-                f"−${amount:,}", font_size=24, color=color,
-            ).next_to(bar, RIGHT, buff=0.24)
+        def make_row(y, label_txt, amount, color):
+            w = max(MAX_BAR * (amount / GROSS), 0.08)
+            bar = Rectangle(width=w, height=BAR_H)
+            bar.set_fill(color, opacity=0.9).set_stroke(width=0)
+            bar.move_to([BAR_L + w / 2, y, 0])
+            lbl = Text(label_txt, font_size=22, color="#888888")
+            lbl.next_to([LABEL_R, y, 0], LEFT, buff=0)
+            amt = Text(f"−${amount:,}", font_size=22, color=color)
+            amt.next_to([AMT_L, y, 0], RIGHT, buff=0)
             return bar, lbl, amt
 
-        # — gross bar ————————————————————————————————————————
-        gross_bar = Rectangle(width=BAR_W, height=BAR_H)
+        gross_y   = 2.2
+        gross_bar = Rectangle(width=MAX_BAR, height=BAR_H)
         gross_bar.set_fill("#EBEBEB", opacity=0.15).set_stroke("#EBEBEB", width=1)
-        gross_bar.move_to([START_X + BAR_W / 2, 2.4, 0])
-        gross_lbl = Text(GROSS_LABEL, font_size=26, color="#EBEBEB")
-        gross_lbl.next_to(gross_bar, LEFT, buff=0.32)
-        gross_amt = Text(f"${GROSS:,}", font_size=26, color="#EBEBEB")
-        gross_amt.next_to(gross_bar, RIGHT, buff=0.24)
+        gross_bar.move_to([BAR_L + MAX_BAR / 2, gross_y, 0])
+        gross_lbl = Text(GROSS_LABEL, font_size=24, color="#EBEBEB")
+        gross_lbl.next_to([LABEL_R, gross_y, 0], LEFT, buff=0)
+        gross_amt = Text(f"${GROSS:,}", font_size=24, color="#EBEBEB")
+        gross_amt.next_to([AMT_L, gross_y, 0], RIGHT, buff=0)
 
         self.add(gross_bar, gross_lbl, gross_amt)
         self.wait(0.6)
 
-        # — animate each deduction row ————————————————————————
-        n_ded      = len(deductions)
-        row_top    = 1.3
-        row_ys     = [row_top - i * 1.0 for i in range(n_ded)]
-        step_time  = (DURATION_SEC * 0.65) / max(n_ded, 1)
+        n_ded     = len(deductions)
+        row_ys    = [gross_y - ROW_STEP * (i + 1) for i in range(n_ded)]
+        step_time = (DURATION_SEC * 0.65) / max(n_ded, 1)
 
         for d, y in zip(deductions, row_ys):
             bar, lbl, amt = make_row(y, d["label"], d["amount"], d["color"])
@@ -50,24 +51,22 @@ class MainScene(Scene):
                 lbl.animate.set_opacity(1),
                 amt.animate.set_opacity(1),
                 run_time=step_time * 0.7,
-                rate_func=ease_out_cubic,
+                rate_func=smooth,
             )
             self.wait(step_time * 0.3)
 
-        # — remaining ——————————————————————————————————————————
         total_deducted = sum(d["amount"] for d in deductions)
         remaining_amt  = GROSS - total_deducted
-        remain_w       = BAR_W * (remaining_amt / GROSS)
-        remain_y       = row_ys[-1] - 1.0 if row_ys else -2.8
+        remain_w       = max(MAX_BAR * (remaining_amt / GROSS), 0.08)
+        remain_y       = row_ys[-1] - ROW_STEP if row_ys else -2.5
 
-        remain_bar = Rectangle(width=max(remain_w, 0.1), height=BAR_H)
+        remain_bar = Rectangle(width=remain_w, height=BAR_H)
         remain_bar.set_fill("#E63946", opacity=0.95).set_stroke(width=0)
-        remain_bar.move_to([START_X + max(remain_w, 0.1) / 2, remain_y, 0])
-        remain_lbl = Text("what remains", font_size=26, color="#E63946")
-        remain_lbl.next_to(remain_bar, LEFT, buff=0.32)
-        remain_val = Text(
-            f"${remaining_amt:,}", font_size=26, color="#E63946",
-        ).next_to(remain_bar, RIGHT, buff=0.24)
+        remain_bar.move_to([BAR_L + remain_w / 2, remain_y, 0])
+        remain_lbl = Text("what remains", font_size=24, color="#E63946")
+        remain_lbl.next_to([LABEL_R, remain_y, 0], LEFT, buff=0)
+        remain_val = Text(f"${remaining_amt:,}", font_size=24, color="#E63946")
+        remain_val.next_to([AMT_L, remain_y, 0], RIGHT, buff=0)
 
         self.play(
             FadeIn(remain_bar, shift=UP * 0.1),

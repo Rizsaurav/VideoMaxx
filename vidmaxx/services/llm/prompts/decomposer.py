@@ -121,33 +121,40 @@ visualization_type: classify each sentence for animated visualization.
   Use a viz type ONLY when the sentence contains a concrete number, statistic,
   comparison, monetary flow, historical date sequence, or depletion sequence.
 
-  counting_number — sentence states a specific dollar amount, percentage, or count
-    that would be more powerful animated counting up.
+  counting_number — sentence states a specific dollar amount, percentage, or count.
+    Use this aggressively — any sentence where a number IS the argument deserves it.
     Examples: "Americans spend $1.2 trillion on housing every year."
               "The top 1% owns 38% of all wealth."
-              "The average worker gets a 2.3% raise — inflation runs at 4.1%."
+              "Women hold only 8% of Fortune 500 CEO positions."
+              "Patriarchy represents only 6% of human history."
+              "Nearly 60% of women's work is unpaid or informal."
 
-  comparison — sentence directly compares two quantities, rates, or groups side by side.
+  comparison — sentence compares two or more quantities, rates, or groups.
+    Use when the contrast between groups is the point, even without explicit numbers.
     Examples: "CEOs earn 350 times what their median worker makes."
-              "A white applicant is 50% more likely to get a callback than an equally qualified Black applicant."
+              "Men own 75% of the world's land — women own less than 20%."
+              "In hunter-gatherer societies, women contributed 60–80% of calories."
 
-  flow — sentence describes money, power, or data moving between entities in a loop or chain.
-    Examples: "Your rent payment goes to a landlord, who sends it to a REIT, which pays dividends to shareholders."
-              "Tax dollars flow from workers to the federal budget to defense contractors."
+  flow — sentence describes something moving through a chain of entities.
+    Use for power, labour, money, or resources passing from one group to another.
+    Examples: "Women's unpaid domestic labour subsidises the entire formal economy."
+              "Agricultural surplus flowed from peasant farmers to a warrior class to the priesthood."
+              "Care work done at home enables paid work to happen — but receives no wage."
 
-  timeline — sentence references multiple dates or a historical sequence of events.
-    Examples: "In 1971 Nixon ended the gold standard. By 1980 inflation had peaked at 13%."
-              "The minimum wage was last raised in 2009 — sixteen years ago."
+  timeline — sentence references a historical sequence or span of time.
+    Use whenever two or more dates or eras appear, or a "years ago" span is stated.
+    Examples: "In 1971 Nixon ended the gold standard. By 1980 inflation peaked at 13%."
+              "Hunter-gatherer egalitarianism lasted 290,000 years. Patriarchy has lasted 12,000."
 
-  shrink — sentence describes something being depleted chunk by chunk (taxes, fees, costs).
-    Examples: "After federal tax, state tax, FICA, and health insurance, a $60,000 salary becomes $41,000."
-              "The $500 stimulus check covered rent for 2 days, groceries for 4, and left $12."
+  shrink — sentence describes a resource being depleted across multiple deductions.
+    Examples: "After federal tax, state tax, FICA, and health insurance, a $60k salary becomes $41k."
+              "Of every dollar a woman earns, 18 cents goes to the gender pay gap, another 12 to unpaid care."
 
   Rules:
-  - At most 25% of sentences in a chapter should have a viz type — be selective.
-  - When in doubt, use "none". Bad animations are worse than stock footage.
-  - Never assign a viz type to transitional, emotional, or opinion sentences.
-  - Only assign to sentences where the NUMBER is the whole point of the sentence.
+  - Aim for 20–35% of sentences in a chapter to have a viz type when the content supports it.
+  - Stat-heavy chapters should be closer to 35%; narrative chapters closer to 20%.
+  - Never assign a viz type to transitional, emotional, or pure opinion sentences.
+  - Only assign when the number, comparison, or sequence is the core claim of the sentence.
 
 Output only the JSON array. No prose, no markdown fences.\
 """

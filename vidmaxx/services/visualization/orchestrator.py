@@ -16,7 +16,6 @@ from vidmaxx.services.llm.client import LLMClient
 from vidmaxx.services.visualization.agents.comparison_agent import ComparisonAgent
 from vidmaxx.services.visualization.agents.counting_agent import CountingAgent
 from vidmaxx.services.visualization.agents.flow_agent import FlowAgent
-from vidmaxx.services.visualization.agents.matplotlib_agent import MatplotlibAgent
 from vidmaxx.services.visualization.agents.shrink_agent import ShrinkAgent
 from vidmaxx.services.visualization.agents.timeline_agent import TimelineAgent
 from vidmaxx.services.visualization.executor import ManimExecutor
@@ -35,7 +34,6 @@ class VizOrchestrator:
             "timeline":        TimelineAgent(llm, executor),
             "shrink":          ShrinkAgent(llm, executor),
         }
-        self._matplotlib = MatplotlibAgent(llm)
 
     async def generate_all(
         self,
@@ -74,19 +72,8 @@ class VizOrchestrator:
         if result:
             return _make_asset(sentence.id, result)
 
-        # Fallback 1: matplotlib static image
-        log.warning("viz_manim_exhausted_trying_matplotlib", id=sentence.id, viz_type=viz_type)
-        static_path = assets_dir / f"{sentence.id}_viz.png"
-        static = await self._matplotlib.run(
-            sentence_text=sentence.text,
-            viz_type=viz_type,
-            output_path=static_path,
-        )
-        if static:
-            return _make_asset(sentence.id, static)
-
-        # Fallback 2: None → s03 pool-cycles stock footage
-        log.error("viz_all_failed_using_stock", id=sentence.id, viz_type=viz_type)
+        # Manim failed — fall back to stock footage
+        log.warning("viz_manim_failed_using_stock", id=sentence.id, viz_type=viz_type)
         return None
 
 
