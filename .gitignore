@@ -18,6 +18,7 @@ uv.lock
 
 # Env
 .env
+.env.example
 .env.local
 .env.*.local
 
@@ -54,6 +55,9 @@ style_pack/voice_ref.wav
 .idea/
 *.swp
 *.swo
+
+# Personal / not for repo
+RESUME_VIDMAXX.md
 
 # Logs
 *.log
