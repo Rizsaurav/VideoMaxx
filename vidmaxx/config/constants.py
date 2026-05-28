@@ -81,7 +81,7 @@ MUSIC_FADE_DURATION_SEC = 1.5
 # ---------------------------------------------------------------------------
 
 KEN_BURNS_SCALE_START = 1.0
-KEN_BURNS_SCALE_END = 1.08             # 8% zoom over the clip duration
+KEN_BURNS_SCALE_END = 1.12             # 12% zoom over the clip duration
 
 # ---------------------------------------------------------------------------
 # Script / LLM

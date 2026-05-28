@@ -154,11 +154,20 @@ def build_video_concat(n_clips: int) -> str:
     return f"{labels}concat=n={n_clips}:v=1:a=0[vraw]"
 
 
-def build_subtitle_filter(ass_path: str) -> str:
-    """[vraw]ass=<path>[vout] — burns captions into the video stream."""
-    # Escape single-quotes and backslashes in the path for the filter string.
+def build_color_grade_filter() -> str:
+    """[vraw] → slight contrast/saturation lift + cool shadow tint → [vgraded]."""
+    return (
+        "[vraw]"
+        "eq=contrast=1.06:brightness=0.015:saturation=0.82,"
+        "colorbalance=bs=-0.05:ms=0:hs=0"
+        "[vgraded]"
+    )
+
+
+def build_subtitle_filter(ass_path: str, input_label: str = "[vgraded]") -> str:
+    """Burns ASS captions into the video stream. input_label → [vout]."""
     safe = ass_path.replace("\\", "\\\\").replace("'", "\\'").replace(":", "\\:")
-    return f"[vraw]ass='{safe}'[vout]"
+    return f"{input_label}ass='{safe}'[vout]"
 
 
 def build_audio_mix(

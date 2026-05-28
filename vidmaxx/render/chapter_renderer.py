@@ -45,6 +45,7 @@ from vidmaxx.models.timeline import ChapterSlice, MotionEffect
 from vidmaxx.render.filtergraph import (
     build_audio_mix,
     build_clip_filter,
+    build_color_grade_filter,
     build_subtitle_filter,
     build_video_concat,
 )
@@ -185,6 +186,7 @@ def render_chapter(
         filter_parts.append(build_clip_filter(i, clip, is_video))
 
     filter_parts.append(build_video_concat(len(clips)))
+    filter_parts.append(build_color_grade_filter())
     filter_parts.append(build_subtitle_filter(ass_path_str))
     filter_parts.append(
         build_audio_mix(
