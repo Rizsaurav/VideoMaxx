@@ -35,6 +35,10 @@ from vidmaxx.services.assets.fetcher import AssetFetcher
 from vidmaxx.services.llm.client import LLMClient
 from vidmaxx.services.vision.clip_ranker import CLIPRanker
 from vidmaxx.services.visualization.orchestrator import VizOrchestrator
+from vidmaxx.services.visualization.quote_card import (
+    generate_quote_card,
+    select_quote_card_sentences,
+)
 from vidmaxx.state.cache import PipelineCache
 from vidmaxx.state.project_state import ProjectStateManager
 
@@ -58,7 +62,26 @@ async def run(
         # Split sentences: numerical ones go to viz agents, rest to stock footage
         viz_sentences = [s for s in sentences if s.visualization_type != "none"]
         stock_sentences = [s for s in sentences if s.visualization_type == "none"]
-        log.info("stage_assets_split", viz=len(viz_sentences), stock=len(stock_sentences))
+
+        # High-exaggeration "none" sentences get full-screen quote cards instead of stock.
+        quote_ids = select_quote_card_sentences(stock_sentences)
+        quote_sentences  = [s for s in stock_sentences if s.id in quote_ids]
+        stock_sentences  = [s for s in stock_sentences if s.id not in quote_ids]
+        log.info(
+            "stage_assets_split",
+            viz=len(viz_sentences),
+            quote_cards=len(quote_sentences),
+            stock=len(stock_sentences),
+        )
+
+        # Generate quote cards synchronously (fast — just Pillow PNG writes)
+        quote_assets: list[Asset] = []
+        for s in quote_sentences:
+            try:
+                png_path = generate_quote_card(s.id, s.text, paths.assets_dir)
+                quote_assets.append(_asset_from_existing(s.id, png_path))
+            except Exception:
+                log.exception("quote_card_failed", id=s.id)
 
         ranker = CLIPRanker(device=settings.tts_device, cache=cache)
         fetcher = AssetFetcher(
@@ -84,8 +107,10 @@ async def run(
 
         viz_results: dict = await viz_task if viz_task else {}
 
-        # Merge: viz assets take priority (clip_score=1.0 marks them as generated)
+        # Merge: viz and quote cards take priority over stock
         asset_map: dict[str, Asset] = {a.sentence_id: a for a in stock_assets if a}
+        for a in quote_assets:
+            asset_map[a.sentence_id] = a
         for sid, asset in viz_results.items():
             if asset:
                 asset_map[sid] = asset
@@ -97,6 +122,7 @@ async def run(
             "stage_assets_done",
             slug=slug,
             viz_generated=len([a for a in viz_results.values() if a]),
+            quote_cards=len(quote_assets),
             stock_fetched=len([a for a in stock_assets if a]),
             total=len(assets),
             missing=len(sentences) - len(assets),
