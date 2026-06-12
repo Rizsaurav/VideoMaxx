@@ -142,11 +142,25 @@ async def run(
         ordered = [chapter_mp4s[i] for i in sorted(chapter_mp4s)]
         final = await asyncio.to_thread(concat_chapters, ordered, paths.final_video)
 
-        log.info(
-            "stage_render_done",
-            slug=slug,
-            video=str(final),
-            size_mb=round(final.stat().st_size / 1e6, 1),
-        )
+        size_mb = round(final.stat().st_size / 1e6, 1)
+        log.info("stage_render_done", slug=slug, video=str(final), size_mb=size_mb)
+
+        if settings.r2_configured:
+            await _upload_final_r2(final, slug, settings)
 
     return paths.final_video
+
+
+async def _upload_final_r2(final: Path, slug: str, settings: Settings) -> None:
+    from vidmaxx.services.storage.r2 import R2Client
+    r2 = R2Client(
+        endpoint=settings.r2_endpoint,
+        access_key_id=settings.r2_access_key_id,
+        secret_access_key=settings.r2_secret_access_key,
+        bucket=settings.r2_bucket,
+    )
+    key = await asyncio.to_thread(r2.upload_final, final, slug)
+    if key:
+        log.info("r2_final_uploaded", slug=slug, key=key, size_mb=round(final.stat().st_size / 1e6, 1))
+    else:
+        log.warning("r2_final_upload_failed", slug=slug)

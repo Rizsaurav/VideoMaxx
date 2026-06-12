@@ -45,6 +45,16 @@ class Settings(BaseSettings):
     # --- Remote SigLIP asset ranker (GPU machine via ngrok) ---
     siglip_url: str = ""               # e.g. https://venue-cubicle-imprudent.ngrok-free.dev
 
+    # --- Cloudflare R2 storage ---
+    r2_endpoint: str = ""
+    r2_access_key_id: str = ""
+    r2_secret_access_key: str = ""
+    r2_bucket: str = "vidmaxx"
+
+    @property
+    def r2_configured(self) -> bool:
+        return bool(self.r2_endpoint and self.r2_access_key_id and self.r2_secret_access_key)
+
     # --- Pipeline overrides (mirror constants.py defaults, env-settable) ---
     tts_backend: str = "kokoro"        # "kokoro" | "elevenlabs" | "chatterbox"
     tts_device: str = "cpu"

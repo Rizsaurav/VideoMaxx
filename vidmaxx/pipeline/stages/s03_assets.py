@@ -127,6 +127,11 @@ async def run(
         assets = list(asset_map.values())
 
         _write_credits(assets, paths.credits_json)
+
+        # Upload selected assets to R2 (best-effort, never crashes the pipeline)
+        if settings.r2_configured:
+            await _upload_assets_r2(assets, slug, settings)
+
         log.info(
             "stage_assets_done",
             slug=slug,
@@ -138,6 +143,25 @@ async def run(
         )
 
     return assets
+
+
+async def _upload_assets_r2(assets: list[Asset], slug: str, settings: Settings) -> None:
+    from vidmaxx.services.storage.r2 import R2Client
+    r2 = R2Client(
+        endpoint=settings.r2_endpoint,
+        access_key_id=settings.r2_access_key_id,
+        secret_access_key=settings.r2_secret_access_key,
+        bucket=settings.r2_bucket,
+    )
+    uploaded = skipped = 0
+    for asset in assets:
+        if asset.local_path and asset.local_path.exists():
+            key = await asyncio.to_thread(r2.upload_asset, asset.local_path, slug)
+            if key:
+                uploaded += 1
+            else:
+                skipped += 1
+    log.info("r2_assets_uploaded", slug=slug, uploaded=uploaded, skipped_cap=skipped)
 
 
 _ASSETS_SIZE_CAP_BYTES = 3 * 1024 ** 3  # 3 GB
