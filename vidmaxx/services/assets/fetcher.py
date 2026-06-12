@@ -34,8 +34,6 @@ from vidmaxx.services.assets.internet_archive import InternetArchiveSource
 from vidmaxx.services.assets.pexels import PexelsSource
 from vidmaxx.services.assets.pixabay import PixabaySource
 from vidmaxx.services.assets.wikimedia import WikimediaSource
-from vidmaxx.services.vision.clip_ranker import CLIPRanker
-
 log = structlog.get_logger(__name__)
 
 _DOWNLOAD_TIMEOUT = httpx.Timeout(60.0)
@@ -46,7 +44,7 @@ class AssetFetcher:
         self,
         pexels_key: str,
         pixabay_key: str,
-        ranker: CLIPRanker,
+        ranker,  # CLIPRanker | SmartRanker — both expose rank(query, candidates)
     ) -> None:
         self._sources: list[AssetSourceBase] = [
             PexelsSource(pexels_key),

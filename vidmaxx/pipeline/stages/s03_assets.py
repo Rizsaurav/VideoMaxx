@@ -34,6 +34,7 @@ from vidmaxx.models.script import Script
 from vidmaxx.services.assets.fetcher import AssetFetcher
 from vidmaxx.services.llm.client import LLMClient
 from vidmaxx.services.vision.clip_ranker import CLIPRanker
+from vidmaxx.services.vision.smart_ranker import SmartRanker
 from vidmaxx.services.visualization.orchestrator import VizOrchestrator
 from vidmaxx.services.visualization.quote_card import (
     generate_quote_card,
@@ -83,7 +84,15 @@ async def run(
             except Exception:
                 log.exception("quote_card_failed", id=s.id)
 
-        ranker = CLIPRanker(device=settings.tts_device, cache=cache)
+        if settings.siglip_url:
+            ranker = SmartRanker(
+                siglip_url=settings.siglip_url,
+                clip_device=settings.tts_device,
+                cache=cache,
+            )
+        else:
+            ranker = CLIPRanker(device=settings.tts_device, cache=cache)
+
         fetcher = AssetFetcher(
             pexels_key=settings.pexels_api_key,
             pixabay_key=settings.pixabay_api_key,

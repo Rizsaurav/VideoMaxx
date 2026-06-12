@@ -42,6 +42,9 @@ class Settings(BaseSettings):
     # --- Remote Chatterbox TTS (GPU machine via ngrok) ---
     chatterbox_url: str = ""           # e.g. https://shivering-cosigner-woozy.ngrok-free.dev
 
+    # --- Remote SigLIP asset ranker (GPU machine via ngrok) ---
+    siglip_url: str = ""               # e.g. https://venue-cubicle-imprudent.ngrok-free.dev
+
     # --- Pipeline overrides (mirror constants.py defaults, env-settable) ---
     tts_backend: str = "kokoro"        # "kokoro" | "elevenlabs" | "chatterbox"
     tts_device: str = "cpu"
