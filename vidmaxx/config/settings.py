@@ -39,8 +39,11 @@ class Settings(BaseSettings):
     elevenlabs_voice_id: str = ""      # optional — resolved by name search if empty
     elevenlabs_voice_name: str = "Ryan Kurk"  # fallback name search
 
+    # --- Remote Chatterbox TTS (GPU machine via ngrok) ---
+    chatterbox_url: str = ""           # e.g. https://shivering-cosigner-woozy.ngrok-free.dev
+
     # --- Pipeline overrides (mirror constants.py defaults, env-settable) ---
-    tts_backend: str = "kokoro"        # "kokoro" | "elevenlabs"
+    tts_backend: str = "kokoro"        # "kokoro" | "elevenlabs" | "chatterbox"
     tts_device: str = "cpu"
     whisperx_model: str = "large-v3"
     clip_model: str = "ViT-B-32"
